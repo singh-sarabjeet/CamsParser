@@ -8,4 +8,4 @@ Clone the repo and open it in an IDE. Open the controller class and replace the 
 
 ## How to contribute
 
-This is an open source project and anyone can contribute to it by raising a PR. If you can think of an improvement or a bug, feel free to raise and issue.
+This is an open source project and anyone can contribute to it by raising a PR. If you can think of an improvement or a bug, feel free to raise an issue.
