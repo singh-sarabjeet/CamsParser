@@ -2,13 +2,11 @@ package com.camsparser.controller;
 
 import com.camsparser.dto.ResponseDTO;
 import com.camsparser.service.ParserService;
-import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.encryption.InvalidPasswordException;
 import org.apache.pdfbox.text.PDFTextStripper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,6 +30,7 @@ public class ParserController {
     @PostMapping(value = "/getCamsAsJson")
     public ResponseDTO getParsedCamsStatement(@RequestParam MultipartFile multiPartFile, @RequestParam String password) {
 
+        // Replace this location with a temp file location in your system
         File file = new File("/home/sarabjeetsingh/tempFile.tmp");
         try {
             multiPartFile.transferTo(file);
