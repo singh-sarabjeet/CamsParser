@@ -47,7 +47,7 @@ public class ParserController {
             e.printStackTrace();
         }
         try (PDDocument document = PDDocument.load(file, password)) {
-            log.info("PDF Processing started...");
+            log.info("PDF Processing started....");
             // The order of the text tokens in a PDF file may not be in the same as they appear
             // visually on the screen, so tell PDFBox to sort by text position
 
