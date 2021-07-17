@@ -40,7 +40,7 @@ public class ParserController {
     public ResponseDTO getParsedCamsStatement(@RequestParam MultipartFile multiPartFile, @RequestParam String password) {
 
         // Replace this location with a temp file location in your system
-        File file = new File("/home/sarabjeetsingh/tempFile.tmp");
+        File file = new File("/tmp/tempFile.tmp");
         try {
             multiPartFile.transferTo(file);
         } catch (IOException e) {
@@ -54,7 +54,7 @@ public class ParserController {
             PDFTextStripper pdfTextStripper = new PDFTextStripper();
             pdfTextStripper.setSortByPosition(true);
             pdfTextStripper.setLineSeparator("\n\n");
-            try (BufferedWriter writer = Files.newBufferedWriter(Paths.get("/home/sarabjeetsingh/bcbc.txt"), UTF_8)) {
+            try (BufferedWriter writer = Files.newBufferedWriter(Paths.get("/tmp/bcbc.txt"), UTF_8)) {
                 // This will take a PDDocument and write the text of that document to the writer.
                 pdfTextStripper.writeText(document, writer);
             }
@@ -66,7 +66,7 @@ public class ParserController {
         ResponseDTO responseDTO = new ResponseDTO();
         try {
 
-            responseDTO.setData(parser.parseFile("/home/sarabjeetsingh/bcbc.txt"));
+            responseDTO.setData(parser.parseFile("/tmp/bcbc.txt"));
         } catch (IOException e) {
             e.printStackTrace();
         }
