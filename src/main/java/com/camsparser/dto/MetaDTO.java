@@ -10,4 +10,8 @@ public class MetaDTO {
     private String requestId;
     private String displayMessage;
 
+    public MetaDTO(String code, String message) {
+        this.code = code;
+        this.message = message;
+    }
 }

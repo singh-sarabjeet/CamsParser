@@ -1,12 +1,15 @@
 package com.camsparser.controller;
 
+import com.camsparser.dto.MetaDTO;
 import com.camsparser.dto.ResponseDTO;
 import com.camsparser.service.ParserService;
+import com.camsparser.util.Codes;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.encryption.InvalidPasswordException;
 import org.apache.pdfbox.text.PDFTextStripper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,6 +29,14 @@ public class ParserController {
 
     @Autowired
     private ParserService parser;
+
+    @GetMapping(value = "/test-app-available")
+    public ResponseDTO getAppAvailability(){
+        ResponseDTO response = new ResponseDTO();
+        response.setData("App is up and running");
+        response.setMetaDTO(new MetaDTO(Codes.CP_APP_200.getCode(),Codes.CP_APP_200.getMessage()));
+        return response;
+    }
 
     @PostMapping(value = "/getCamsAsJson")
     public ResponseDTO getParsedCamsStatement(@RequestParam MultipartFile multiPartFile, @RequestParam String password) {
